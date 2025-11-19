@@ -17,20 +17,21 @@
       --teal-600: #06b6d4;
       --cyan-500: #06b6d4;
       --muted: #64748b;
-      --card-bg: rgba(255,255,255,0.9);
+      --card-bg: rgba(6,182,212,0.04);
     }
     *{ box-sizing:border-box; font-family:'Nunito',sans-serif; }
     html,body{ height:100%; margin:0; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; color:#04263a; }
 
     /* Blended background - layered shapes + soft diagonal gradient */
-    body{
-      background:
-        radial-gradient(600px 300px at 10% 5%, rgba(6,182,212,0.08), transparent 12%),
-        radial-gradient(500px 260px at 95% 95%, rgba(6,182,212,0.06), transparent 12%),
-        linear-gradient(135deg, #f0fdff 0%, #e6fbff 25%, #dff6fb 45%, #c9f1f7 70%, #bff0fb 100%);
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+   body{
+  background:
+    radial-gradient(600px 300px at 10% 5%, rgba(6,182,212,0.08), transparent 12%),
+    radial-gradient(500px 260px at 95% 95%, rgba(6,182,212,0.06), transparent 12%),
+    linear-gradient(135deg, #f0fdff 0%, #e6fbff 25%, #dff6fb 45%, #c9f1f7 70%, #bff0fb 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
 
     /* Glass card */
     .ghibli-card{
@@ -95,6 +96,11 @@
             top: 20%;
             right: 15%;
             animation: drift 25s infinite linear reverse;
+        }
+        
+        @keyframes drift {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(100px); }
         }
     /* Pop-in */
     .pop-in { animation: popIn .6s cubic-bezier(.2,.9,.3,1) both; }

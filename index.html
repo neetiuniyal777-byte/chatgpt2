@@ -67,7 +67,35 @@
       border-color: rgba(6,182,212,0.22);
       background: linear-gradient(180deg, rgba(6,182,212,0.08), rgba(6,182,212,0.03));
     }
-
+ .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+            opacity: 0.6;
+        }
+        
+        .cloud:before {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50px;
+        }
+        
+        .cloud1 {
+            width: 100px;
+            height: 40px;
+            top: 10%;
+            left: 10%;
+            animation: drift 20s infinite linear;
+        }
+        
+        .cloud2 {
+            width: 80px;
+            height: 30px;
+            top: 20%;
+            right: 15%;
+            animation: drift 25s infinite linear reverse;
+        }
     /* Pop-in */
     .pop-in { animation: popIn .6s cubic-bezier(.2,.9,.3,1) both; }
     @keyframes popIn { 0%{opacity:0; transform:translateY(12px) scale(.985)} 100%{opacity:1; transform:translateY(0) scale(1)} }
@@ -111,34 +139,62 @@
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-12">
-    <!-- Hero -->
-    <section class="text-center mb-20 fade-in relative">
-      <h2 class="text-5xl font-bold text-slate-800 mb-6 leading-tight tracking-tight">Find What's Lost.<br><span class="text-teal-600">Return What's Found.</span></h2>
-
-      <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
-        <!-- Lost -->
-        <button id="lostChoice" onclick="selectChoice('lost')" aria-pressed="false"
-          class="choice-btn ghibli-card p-8 rounded-3xl text-center min-w-72 group pulse-glow pop-in">
-          <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-md">
-            <!-- icon -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          </div>
-          <h3 class="text-2xl font-semibold text-slate-800 mb-2">I Lost Something</h3>
-          <p class="text-slate-600 text-sm">Report a lost item and we'll help match it.</p>
-        </button>
-
-        <!-- Found -->
-        <button id="foundChoice" onclick="selectChoice('found')" aria-pressed="false"
-          class="choice-btn ghibli-card p-8 rounded-3xl text-center min-w-72 group pulse-glow pop-in">
-          <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-cyan-400 to-sky-400 rounded-xl flex items-center justify-center shadow-md">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <h3 class="text-2xl font-semibold text-slate-800 mb-2">I Found Something</h3>
-          <p class="text-slate-600 text-sm">Report a found item to help return it home.</p>
-        </button>
-      </div>
-    </section>
+   <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <!-- Hero Section -->
+        <section class="text-center mb-24 fade-in relative">
+            <!-- Background humans illustration -->
+            <div class="absolute top-0 left-1/4 opacity-8 floating">
+                <svg width="100" height="100" viewBox="0 0 120 120">
+                    <!-- Person walking with phone -->
+                    <circle cx="40" cy="25" r="10" fill="#0ea5e9"/>
+                    <rect x="35" y="35" width="10" height="20" rx="5" fill="#0284c7"/>
+                    <ellipse cx="28" cy="42" rx="3" ry="8" fill="#0ea5e9"/>
+                    <ellipse cx="52" cy="42" rx="3" ry="8" fill="#0ea5e9"/>
+                    <ellipse cx="37" cy="62" rx="3" ry="10" fill="#0369a1"/>
+                    <ellipse cx="43" cy="62" rx="3" ry="10" fill="#0369a1"/>
+                    <!-- Phone in hand -->
+                    <rect x="25" y="38" width="4" height="6" rx="1" fill="#1e293b"/>
+                </svg>
+            </div>
+            <div class="absolute top-0 right-1/4 opacity-8 floating" style="animation-delay: 1s;">
+                <svg width="100" height="100" viewBox="0 0 120 120">
+                    <!-- Person with found item -->
+                    <circle cx="60" cy="25" r="10" fill="#06b6d4"/>
+                    <rect x="55" y="35" width="10" height="20" rx="5" fill="#0891b2"/>
+                    <ellipse cx="48" cy="42" rx="3" ry="8" fill="#06b6d4"/>
+                    <ellipse cx="72" cy="42" rx="3" ry="8" fill="#06b6d4"/>
+                    <ellipse cx="57" cy="62" rx="3" ry="10" fill="#0e7490"/>
+                    <ellipse cx="63" cy="62" rx="3" ry="10" fill="#0e7490"/>
+                    <!-- Found item (keys) -->
+                    <circle cx="45" cy="40" r="2" fill="#0ea5e9"/>
+                    <rect x="43" y="42" width="4" height="2" rx="1" fill="#0ea5e9"/>
+                </svg>
+            </div>
+            
+            <h2 class="text-6xl font-bold text-slate-800 mb-12 leading-tight tracking-tight">Find What's Lost.<br><span class="text-blue-600">Return What's Found.</span></h2>
+            <div class="flex flex-col md:flex-row gap-10 justify-center items-center">
+                <button onclick="showLostForm()" class="ghibli-card bg-gradient-to-br from-blue-50 to-blue-100/50 hover:from-blue-100 hover:to-blue-200/50 p-10 rounded-3xl text-center min-w-72 group pulse-glow hover:wiggle transition-all duration-300 transform hover:scale-105">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="white" class="group-hover:animate-pulse">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3 group-hover:text-blue-700 transition-colors leading-tight">I Lost Something</h3>
+                    <p class="text-slate-600 group-hover:text-blue-600 transition-colors leading-relaxed">Report your lost item and we'll help you find it</p>
+                </button>
+                
+                <button onclick="showFoundForm()" class="ghibli-card bg-gradient-to-br from-teal-50 to-cyan-100/50 hover:from-teal-100 hover:to-cyan-200/50 p-10 rounded-3xl text-center min-w-72 group pulse-glow hover:wiggle transition-all duration-300 transform hover:scale-105">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="white" class="group-hover:animate-bounce">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3 group-hover:text-teal-700 transition-colors leading-tight">I Found Something</h3>
+                    <p class="text-slate-600 group-hover:text-teal-600 transition-colors leading-relaxed">Help return someone's lost item</p>
+                </button>
+            </div>
+        </section>
 
     <!-- About -->
     <section class="mb-16 fade-in">
@@ -148,34 +204,60 @@
       </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="mb-16 fade-in">
-      <div class="ghibli-card p-8 rounded-3xl">
-        <h3 class="text-3xl font-bold text-slate-800 mb-6 text-center">How It Works</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="p-4 rounded-2xl bg-white/60 text-center">
-            <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center text-2xl">📝</div>
-            <h4 class="font-semibold">Report</h4>
-            <p class="text-sm text-slate-600">Fill the form for lost or found items.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white/60 text-center">
-            <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center text-2xl">🔎</div>
-            <h4 class="font-semibold">Match</h4>
-            <p class="text-sm text-slate-600">We match reports intelligently.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white/60 text-center">
-            <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center text-2xl">🤝</div>
-            <h4 class="font-semibold">Return</h4>
-            <p class="text-sm text-slate-600">Coordinate a safe return via chat.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-white/60 text-center">
-            <div class="w-12 h-12 mx-auto mb-3 rounded-lg flex items-center justify-center text-2xl">⭐</div>
-            <h4 class="font-semibold">Feedback</h4>
-            <p class="text-sm text-slate-600">Share your experience to improve the service.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+   <!-- How It Works -->
+      <section class="mb-20 fade-in">
+            <div class="ghibli-card p-12 rounded-3xl">
+                <h3 class="text-4xl font-bold text-slate-800 mb-12 text-center tracking-tight">How It Works</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100/30 hover:from-blue-100 hover:to-blue-200/50 transition-all duration-300">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">📝</div>
+                        <h4 class="font-bold text-xl mb-4 text-slate-800">Step 1: Report</h4>
+                        <p class="text-slate-600 leading-relaxed">Whether you lost or found an item, simply click the respective button and fill out the form.</p>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-teal-50 to-teal-100/30 hover:from-teal-100 hover:to-teal-200/50 transition-all duration-300">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🔍</div>
+                        <h4 class="font-bold text-xl mb-4 text-slate-800">Step 2: Match</h4>
+                        <p class="text-slate-600 leading-relaxed">Our system connects lost items with their owners through real-time updates and notifications.</p>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-cyan-50 to-cyan-100/30 hover:from-cyan-100 hover:to-cyan-200/50 transition-all duration-300">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">🤝</div>
+                        <h4 class="font-bold text-xl mb-4 text-slate-800">Step 3: Retrieve</h4>
+                        <p class="text-slate-600 leading-relaxed">Arrange to return the item safely with guidance from our platform.</p>
+                    </div>
+                    <div class="text-center p-6 rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100/30 hover:from-sky-100 hover:to-sky-200/50 transition-all duration-300">
+                        <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-sky-500 to-sky-600 rounded-2xl flex items-center justify-center text-3xl shadow-lg">⭐</div>
+                        <h4 class="font-bold text-xl mb-4 text-slate-800">Step 4: Feedback</h4>
+                        <p class="text-slate-600 leading-relaxed">Share your experience to help improve our service and assist others in the community.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+ <!-- Industries Served -->
+        <section class="mb-20 fade-in">
+            <h3 class="text-4xl font-bold text-slate-800 mb-12 text-center tracking-tight">Industries We Serve</h3>
+            <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <div class="ghibli-card p-8 rounded-2xl text-center group cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="bounceCard(this)">
+                    <div class="text-5xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🏫</div>
+                    <h4 class="font-bold text-lg text-slate-700 group-hover:text-slate-600 transition-colors">Schools</h4>
+                </div>
+                <div class="ghibli-card p-8 rounded-2xl text-center group cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="bounceCard(this)">
+                    <div class="text-5xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🎓</div>
+                    <h4 class="font-bold text-lg text-slate-700 group-hover:text-slate-600 transition-colors">Campuses</h4>
+                </div>
+                <div class="ghibli-card p-8 rounded-2xl text-center group cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="bounceCard(this)">
+                    <div class="text-5xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🏨</div>
+                    <h4 class="font-bold text-lg text-slate-700 group-hover:text-slate-600 transition-colors">Hotels</h4>
+                </div>
+                <div class="ghibli-card p-8 rounded-2xl text-center group cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="bounceCard(this)">
+                    <div class="text-5xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">🌳</div>
+                    <h4 class="font-bold text-lg text-slate-700 group-hover:text-slate-600 transition-colors">Parks</h4>
+                </div>
+                <div class="ghibli-card p-8 rounded-2xl text-center group cursor-pointer transform hover:scale-105 transition-all duration-300" onclick="bounceCard(this)">
+                    <div class="text-5xl mb-4 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">✈️</div>
+                    <h4 class="font-bold text-lg text-slate-700 group-hover:text-slate-600 transition-colors">Airports</h4>
+                </div>
+            </div>
+        </section>
 
     <!-- Recently Found -->
     <section class="mb-16 fade-in">
